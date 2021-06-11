@@ -1,3 +1,5 @@
+import { removeProperties, isTSAnyKeyword } from "@babel/types";
+
 /*MAKE SURE TO RETURN ALL OF THE ANSWERS ON THESE TASKS, IF YOU DON'T, THE AUTOGRADER WILL NOT WORK*/
 
 /*When doing these tasks, we recommend using console.log to test the output of your code to make sure it works correctly.*/
@@ -15,9 +17,10 @@ The function should:
   Example createMenuItem('tacos', 8, 'Lunch') should return {name: 'tacos', price: 8, category: 'Lunch'}
 */
 
-function createMenuItem(/*Your code here*/){
-    /*Your code here*/
-}
+function createMenuItem(name, price, category){
+  
+  return {name, price, category};
+  }
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 1b: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Invoke your function!
@@ -28,7 +31,7 @@ Test your createMenuItems function by doing the following:
   
   For example: createMenuItem("pizza",5,"lunch") would return this as the object: {name:"Pizza",price:5,category:"lunch"}
 */
-
+console.log('task 1b', createMenuItem('pizza', 5, 'lunch'));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -49,7 +52,15 @@ export const burger = {
   price: 18, 
   category: "Lunch", 
   /*Your code here*/
+  discount: function(person){
+    if (person === 'teacher' || person ==='student'){
+      return this.price * 0.75;
+    }else if (person === 'public'){
+      return this.price * 0.90;
+    }
+  }
 }
+
 
 
 
@@ -64,12 +75,12 @@ const reviews = [
     {name: "Lauren", rating: 4, feedback: "Absolutely love that they have karaoke Fridays! Food and drink selection is okay."},
     {name: "Reyna", rating: 3.5, feedback: ""},
 ]
-
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Using the reviews array above:
   1. log only Julius' feedback to the console - no function needed 
 */
 
+console.log(reviews[5]['feedback']); 
 
 
 
@@ -78,7 +89,12 @@ Using the reviews array above do the following: (no function needed)
   1. Following the same format (name, rating, feedback), add a new fictitious review object to the reviews array
   2. log the whole array to the console, make sure the new review is inside of it   
 */
-
+let newReview = {};
+newReview.name= 'Sophia';
+newReview.rating='1.5';
+newReview.feedback ='I do not like it'; 
+reviews.push(newReview);
+console.log(reviews);
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -86,7 +102,8 @@ Reyna's feedback is missing! Use what you know to do the following: (no function
   1. Add this feedback to Reyna's rating - "this place is chill with really cool people, great for getting work done on weekdays"
   2. log the reviews array to the console to check your work
 */
-
+reviews[7].feedback =  "this place is chill with really cool people, great for getting work done on weekdays";
+console.log(reviews);
 
 
 
@@ -102,8 +119,10 @@ Use the getReviewByIndex function below to do the following:
 */
 
 
-function getReviewByIndex(/*Your code here*/) {
+function getReviewByIndex(entry, position) {
   /*Your code here*/
+
+   return `${entry[position].name} gave the restaurant a ${entry[position].rating} star review, and their feedback was: ${entry[position].feedback}`;
 }
 
 
@@ -121,8 +140,10 @@ Use the getLastReview function below to do the following:
 */
 
 
-function getLastReview(/*Your code here*/) {
+function getLastReview(info, comments) {
   /*Your code here*/
+  return `${info[comments].name} gave the restaurant a ${info[comments].rating} star review, and their feedback was: ${info[comments].feedback}`;
+  
 } 
 
 
