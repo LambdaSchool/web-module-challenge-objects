@@ -15,9 +15,13 @@ The function should:
   Example createMenuItem('tacos', 8, 'Lunch') should return {name: 'tacos', price: 8, category: 'Lunch'}
 */
 
-function createMenuItem(/*Your code here*/){
-    /*Your code here*/
+function createMenuItem(name, price, category){
+  const menuItem = {name: name, price: price, category: category};
+  return menuItem;
 }
+
+const menuItem1 = createMenuItem('tacos', 8, 'Lunch');
+console.log(menuItem1);
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 1b: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Invoke your function!
@@ -28,8 +32,8 @@ Test your createMenuItems function by doing the following:
   
   For example: createMenuItem("pizza",5,"lunch") would return this as the object: {name:"Pizza",price:5,category:"lunch"}
 */
-
-
+const menuItem2 = createMenuItem("pizza", 5, "lunch");
+console.log(menuItem2);
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 You're having a lunch special! 25% off for teachers and students, 10% off for everyone else. Add a method to the 
@@ -43,14 +47,28 @@ Using the burger object below do the following:
 
   For example: burger.discount("teacher") would return 13.5 and burger.discount("public") would return 16.2
 */
-const burger = {
+const burger = 
+{
   name: "Burger", 
   price: 18, 
-  category: "Lunch", 
-  
+  category: "Lunch",  
+  discount: function(buyerCategory)
+  {
+    if (buyerCategory === "teacher" || buyerCategory === "student")
+    {
+      burger.price -= burger.price * 0.25;
+    }
+    else if (buyerCategory === "public")
+    {
+      burger.price -= burger.price * 0.1;
+    }
+    return burger.price;
+  }
 }
 
-
+const category = "student";
+const price = burger.discount(category);
+console.log(price);
 
 ///////////////Reviews (MVP)///////////////////
 const reviews = [
@@ -68,8 +86,8 @@ const reviews = [
 Using the reviews array above:
   1. log only Julius' feedback to the console - no function needed 
 */
-
-
+const review = reviews[5];
+console.log(review);
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -77,10 +95,12 @@ Reyna's feedback is missing! Use what you know to do the following: (no function
   1. Add this feedback to Reyna's rating - "this place is chill with really cool people, great for getting work done on weekdays"
   2. log the reviews array to the console to check your work
 */
-reviews[7].feedback = 'this place is chill with really cool people, great for getting work done on weekdays';
+
+const lastReview = reviews.find(r => r.name === "Reyna");
+lastReview.feedback = 'this place is chill with really cool people, great for getting work done on weekdays';
 console.log(reviews);
 
-
+// not been tested
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -92,9 +112,14 @@ Write a function that creates an object with name, rating, feedback, add the new
   4. should return the resulting array
 */
 
-function addReview(/*Your Code Here */){
-  /*Your Code Here */
+function addReview(array, name, rating, feedback){
+  const review = {name: name, rating: rating, feedback: feedback};
+  array.push(review);
+  return array;
 }
+const review1 = addReview(reviews, "Daniela", 5, "Beautiful atmosphere and wonderful vegan options!");  
+console.log(review1);
+reviews.pop();
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Write a function to return a review based on the index of the review in the array.
@@ -107,12 +132,13 @@ Use the getReviewByIndex function below to do the following:
 */
 
 
-function getReviewByIndex(/*Your code here*/) {
-  /*Your code here*/
+function getReviewByIndex(array, index) {
+  const reviewIndex = array[index];
+  return `${reviewIndex.name} gave the restaurant a ${reviewIndex.rating} star review, and their feedback was: ${reviewIndex.feedback}`;
 }
 
-
-  
+const review5 = getReviewByIndex(reviews, 0);
+console.log(review5);  
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Write a function to get information about the most recent (last) review called `getLastReview`
@@ -126,11 +152,13 @@ Use the getLastReview function below to do the following:
 */
 
 
-function getLastReview(/*Your code here*/) {
-  /*Your code here*/
-} 
-
-
+function getLastReview(array) {
+  const lastReview = array[array.length-1];
+  const lastReviewAsString = `${lastReview.name} gave the restaurant a ${lastReview.rating} star review, and their feedback was: ${lastReview.feedback}`;
+  return lastReviewAsString
+}
+const lastReviewAsString = getLastReview(reviews);
+console.log(lastReviewAsString);
 
 ///////////////🍔☕️🍽 STRETCH🍔☕️🍽////////////////////
 

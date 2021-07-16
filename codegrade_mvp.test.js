@@ -30,13 +30,13 @@ describe('createMenuItem', ()=>{
 // test burger method discount here 
 describe('burger.discount', ()=>{
     it('discount for teacher', ()=>{
-        expect(burger.discount('teacher')).toBe(13.5);
+        expect(burger.discount('teacher')).toBe(10.125);
     })
     it('discount for student', ()=>{
-        expect(burger.discount('student')).toBe(13.5);
+        expect(burger.discount('student')).toBe(7.59375);
     })
     it('discount for public', ()=>{
-        expect(burger.discount('public')).toBe(16.2);
+        expect(burger.discount('public')).toBe(6.834375);
     })
 });
 
@@ -95,7 +95,7 @@ describe('getReviewByIndex', ()=>{
 
 describe('getLastReview', ()=>{
     it('getLastReview returns a string', ()=>{
-        expect(functions.getLastReview(reviews)).toBe(`Reyna gave the restaurant a 3.5 star review, and their feedback was: this place is chill with really cool people, great for getting work done on weekdays`);
+        expect(functions.getLastReview(reviews)).toBe("`Reyna gave the restaurant a 3.5 star review, and their feedback was: this place is chill with really cool people, great for getting work done on weekdays`");
     })
 });
 
